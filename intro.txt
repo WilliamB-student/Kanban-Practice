@@ -1,4 +1,5 @@
-[STUDENT NAME]
+William Bartemes
+10/7/2026
 
 This is a placeholder file for the DSA8670 Kanban Fundamentals assignment.
 You will edit this file locally on your computer, then commit and push your changes
