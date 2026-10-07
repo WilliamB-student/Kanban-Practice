@@ -1,0 +1,12 @@
+[STUDENT NAME]
+
+This is a placeholder file for the DSA8670 Kanban Fundamentals assignment.
+You will edit this file locally on your computer, then commit and push your changes
+using GitHub Desktop.
+
+Instructions:
+1. Replace the placeholder above with your full name.
+2. Add today’s date on the next line.
+3. Commit and push this change using GitHub Desktop.
+4. Reference the related Issue number in your commit message
+   (e.g., "Added name and date to intro.txt (Fixes #1)").

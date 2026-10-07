@@ -1,0 +1,43 @@
+name: Autograde
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check-repo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check required files exist
+        run: |
+          test -f README.md || (echo "❌ Missing README.md" && exit 1)
+          test -f instructions.md || (echo "❌ Missing instructions.md" && exit 1)
+          test -f intro.txt || (echo "❌ Missing intro.txt" && exit 1)
+          test -f sample-issues.md || (echo "❌ Missing sample-issues.md" && exit 1)
+          echo "✅ All required files are present."
+
+      - name: Check intro.txt has been edited
+        run: |
+          if grep -q "\[STUDENT NAME\]" intro.txt; then
+            echo "❌ intro.txt still contains placeholder text."
+            exit 1
+          fi
+          if [ ! -s intro.txt ]; then
+            echo "❌ intro.txt is empty. Please add your name and date."
+            exit 1
+          fi
+          echo "✅ intro.txt has been edited and is not empty."
+
+      - name: Check README.md contains completion line
+        run: |
+          if grep -q "Completed Kanban Fundamentals" README.md; then
+            echo "✅ README.md contains the completion line."
+          else
+            echo "❌ README.md does not contain the completion line."
+            exit 1
+          fi
